@@ -54,6 +54,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecordDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecordDialog.Designer.cs">
+      <DependentUpon>RecordDialog.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -67,6 +73,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RecordDialog.resx">
+      <DependentUpon>RecordDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -85,6 +94,20 @@
     <Content Include="CyclingDiaryLogo.png" />
     <Content Include="CyclingDiaryLogo1-2.png" />
     <Content Include="CyclingDiaryLogo2-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FormsLibrary\FormsLibrary.csproj">
+      <Project>{B820D183-3BFB-407F-BE84-3AB67CA7FC47}</Project>
+      <Name>FormsLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{8AE253BF-EFCA-40EF-ACB3-C20421BA2639}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{2298D0E7-BA6E-4C5E-93D6-89A1328B4F2C}</Project>
+      <Name>Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
