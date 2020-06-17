@@ -85,6 +85,7 @@
 			this.statisticsBtn.TabIndex = 4;
 			this.statisticsBtn.Text = "Statistics";
 			this.statisticsBtn.UseVisualStyleBackColor = true;
+			this.statisticsBtn.Click += new System.EventHandler(this.statisticsBtn_Click);
 			// 
 			// deleteBtn
 			// 
@@ -95,6 +96,7 @@
 			this.deleteBtn.TabIndex = 3;
 			this.deleteBtn.Text = "Delete";
 			this.deleteBtn.UseVisualStyleBackColor = true;
+			this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
 			// 
 			// editBtn
 			// 
@@ -105,6 +107,7 @@
 			this.editBtn.TabIndex = 2;
 			this.editBtn.Text = "Edit";
 			this.editBtn.UseVisualStyleBackColor = true;
+			this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
 			// 
 			// addNewBtn
 			// 
@@ -115,6 +118,7 @@
 			this.addNewBtn.TabIndex = 1;
 			this.addNewBtn.Text = "Add New";
 			this.addNewBtn.UseVisualStyleBackColor = true;
+			this.addNewBtn.Click += new System.EventHandler(this.addNewBtn_Click);
 			// 
 			// cyclingDiaryLv
 			// 
@@ -216,6 +220,7 @@
 			this.MinimumSize = new System.Drawing.Size(610, 276);
 			this.Name = "MainForm";
 			this.Text = "Cycling Diary";
+			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.CyclingDiaryTlp.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.logo2Pb)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.logo1Pb)).EndInit();
