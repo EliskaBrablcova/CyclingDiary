@@ -162,7 +162,7 @@
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(28, 13);
 			this.label1.TabIndex = 6;
-			this.label1.Text = "v0.1";
+			this.label1.Text = "v1.0";
 			// 
 			// dateCh
 			// 
