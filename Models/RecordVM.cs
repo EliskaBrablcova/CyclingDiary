@@ -9,8 +9,8 @@ namespace Eli.CyclingDiary.Models
 		public int ID { get; set; }
 		public DateTime Date { get; set; }
 		public int MinutesTotal { get; set; }
-		public int DistanceTotal { get; set; }
-		public int AverageSpeed { get; set; }
+		public decimal DistanceTotal { get; set; }
+		public decimal AverageSpeed { get; set; }
 		public string Note { get; set; }
 	}
 }
