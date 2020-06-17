@@ -1,6 +1,9 @@
 ﻿using Eli.CyclingDiary.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Eli.CyclingDiary.Repository
@@ -59,41 +62,92 @@ namespace Eli.CyclingDiary.Repository
 
 		public List<RecordVM> GetAll()
 		{
-			throw new NotImplementedException();
+			var items = readFromFileOrdered();
+			var result = new List<RecordVM>();
+			foreach (var item in items)
+			{
+				var record = new RecordVM
+				{
+					ID = item.ID,
+					Date = item.Date,
+					MinutesTotal = item.MinutesTotal,
+					DistanceTotal = item.DistanceTotal,
+					AverageSpeed = item.MinutesTotal > 0
+						? (item.DistanceTotal / item.MinutesTotal * 60)
+						: 0,
+					Note = item.Note,
+				};
+				result.Add(record);
+			}
+			return result;
 		}
 
 		public Record GetForAdd()
 		{
-			throw new NotImplementedException();
+			return new Record();
 		}
 
 		public Record GetForEdit(int id)
 		{
-			throw new NotImplementedException();
+			var items = readFromFile();
+			return getItemById(items, id);
 		}
-		private object getPositionById(object items, int id)
+		private int? getPositionById(List<Record> items, int id)
 		{
-			throw new NotImplementedException();
+			for (int i = 0; i < items.Count; i++)
+			{
+				var item = items[i];
+				if (item.ID == id)
+				{
+					return i;
+				}
+			}
+			return null;
 		}
-		private object getItemById(object items, int iD)
+		private Record getItemById(List<Record> items, int id)
 		{
-			throw new NotImplementedException();
+			var position = getPositionById(items, id);
+			if (position == null)
+			{
+				return null;
+			}
+			return items[position.Value];
 		}
 
-		private void saveToFile(object items)
+		private int getNewId(List<Record> items)
 		{
-			throw new NotImplementedException();
+			var id = 0;
+			foreach (var item in items)
+			{
+				if (item.ID > id)
+				{
+					id = item.ID;
+				}
+			}
+			return id + 1;
 		}
 
-		private int getNewId(object items)
+		private void saveToFile(List<Record> items)
 		{
-			throw new NotImplementedException();
+			using (var sw = new StreamWriter(_fileName))
+			{
+				sw.Write(JsonConvert.SerializeObject(items));
+			}
 		}
 
-		private object readFromFile()
+
+		private List<Record> readFromFile()
 		{
-			throw new NotImplementedException();
+			using (var sr = new StreamReader(_fileName))
+			{
+				return JsonConvert.DeserializeObject<List<Record>>(sr.ReadToEnd());
+			}
 		}
 
+		private List<Record> readFromFileOrdered()
+		{
+			var items = readFromFile();
+			return items.OrderBy(c => c.Date).ThenBy(c => c.ID).ToList();
+		}
 	}
 }
