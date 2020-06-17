@@ -131,14 +131,18 @@
             this.distanceTotalCh,
             this.averageSpeedCh,
             this.noteCh});
+			this.cyclingDiaryLv.FullRowSelect = true;
 			this.cyclingDiaryLv.HideSelection = false;
 			this.cyclingDiaryLv.Location = new System.Drawing.Point(143, 103);
+			this.cyclingDiaryLv.MultiSelect = false;
 			this.cyclingDiaryLv.Name = "cyclingDiaryLv";
 			this.CyclingDiaryTlp.SetRowSpan(this.cyclingDiaryLv, 5);
 			this.cyclingDiaryLv.Size = new System.Drawing.Size(424, 227);
 			this.cyclingDiaryLv.TabIndex = 5;
 			this.cyclingDiaryLv.UseCompatibleStateImageBehavior = false;
 			this.cyclingDiaryLv.View = System.Windows.Forms.View.Details;
+			this.cyclingDiaryLv.SelectedIndexChanged += new System.EventHandler(this.cyclingDiaryLv_SelectedIndexChanged);
+			this.cyclingDiaryLv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cyclingDiaryLv_KeyDown);
 			// 
 			// versionLbl
 			// 

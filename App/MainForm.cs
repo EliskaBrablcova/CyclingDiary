@@ -92,6 +92,11 @@ namespace App
 			editBtn.Enabled = enabled;
 		}
 
+		private void cyclingDiaryLv_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			setButtonStates();
+		}
+
 		private void addNewBtn_Click(object sender, EventArgs e)
 		{
 			var item = _recordRepo.GetForAdd();
@@ -126,6 +131,11 @@ namespace App
 
 		private void deleteBtn_Click(object sender, EventArgs e)
 		{
+			deleteRecord();
+		}
+
+		private void deleteRecord()
+		{
 			var selected = cyclingDiaryLv.SelectedIndices;
 			if (selected.Count == 1)
 			{
@@ -148,6 +158,14 @@ namespace App
 		private void statisticsBtn_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		private void cyclingDiaryLv_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Delete)
+			{
+				deleteRecord();
+			}
 		}
 	}
 }
